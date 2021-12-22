@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script src="rotation.js"></script>
+    <script src="components/coinCollider.js"></script>
+    <script src="components/fishCollider.js"></script>
+    <script src="components/Game.js"></script>
+
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+
+      <!--Asset Management-->
+      <a-assets>        
+      <a-asset-item id="island" src="./assets/models/island/scene.gltf"></a-asset-item>
+      <a-asset-item id="diver" src="./assets/models/diver/scene.gltf"></a-asset-item>
+      <a-asset-item id="coins" src="./assets/models/coin/scene.gltf"></a-asset-item>
+      <a-asset-item id="fishes" src="./assets/models/fish/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <!-- Terrain  -->
+     <a-entity id="island" gltf-model="#island" position="0 0 0" scale="1 1 1" animation="propety:position;to:0 0 1000;easing:linear;loop:true;dur:150000" terrain-rotation-reader fish coin></a-entity>
+     <a-entity id="diver" gltf-model="#diver" position="0 0 15" scale="1 1 1" rotation="0 0 0" divero gameplay></a-entity>
+
+      <!--Game score-->
+      <a-entity id="header" position="1 -4 0"> 
+        <a-entity position="-28 21 0" text="font:exo2bold;align:center;width:40;color:black;value:VIRTUAL FLIGHT"></a-entity>
+        </a-entity>
+        <a-entity position="-24.5 14 0" text="font:aileronsemibold;width:18;color:black;value:TIME\nREMAINING"></a-entity>
+        <a-entity id="timer"> 
+          <a-entity position="-27 14 0" text="font:exo2bold;align:center;width:30;color:black;value:00:00"></a-entity>
+          </a-entity>
+  
+          <a-entity id="target"> 
+            <a-entity position="-8 0.3 0" text="font:exo2bold;align:center;width:40;color:black;value:20"></a-entity>
+            </a-entity>
+            <a-entity position="-18.5 14 0" text="font:aileronsemibold;width:14;color:black;value:TARGET\nREMAINING"></a-entity>
+  
+            <a-entity id="score"> 
+              <a-entity position="28 15.2 0" text="font:exo2bold;align:center;width:40;color:black;value:0"></a-entity>
+              </a-entity>
+              <a-entity position="41 15 0" text="font:aileronsemibold;width:40;color:black;value:SCORE"></a-entity>
+  
+        <a-entity id="game_over_text" position="0 7.5 0" text="font:aileronsemibold;width:100;align:center;color:black;value:GAME OVER"></a-entity>
+    </a-scene>
+  </body>
+</html>
